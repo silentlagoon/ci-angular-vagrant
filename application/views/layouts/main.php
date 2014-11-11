@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Welcome to CodeIgniter</title>
-    <script src="/public/angular/angular.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
 </head>
 <body>
     <?= $content_for_layout ?>
