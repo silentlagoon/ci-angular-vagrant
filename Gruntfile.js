@@ -1,6 +1,12 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		bower: {
+    		install: {},
+    		options: {
+    			targetDir: 'bower_components'
+    		}
+  		},
 	    phpunit: {
 		    classes: {
 		        dir: 'tests'
@@ -17,12 +23,11 @@ module.exports = function(grunt) {
             }
         }
 	});
+	grunt.loadNpmTasks('grunt-bower-task');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.registerTask('test', [
         'phpunit', 'karma'
     ]);
-	grunt.registerTask('default', [
-        'phpunit', 'karma'
-    ]);
+	grunt.registerTask('default', ['bower']);
 };
