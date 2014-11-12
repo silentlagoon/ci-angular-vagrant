@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
 	    phpunit: {
 		    classes: {
 		        dir: 'tests'
@@ -9,10 +10,16 @@ module.exports = function(grunt) {
 		        bootstrap: '',
 		        colors: true
 		    }
-		}
+		},
+		karma: {
+            unit: {
+                configFile: 'karma.conf.js'
+            }
+        }
 	});
+	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.registerTask('default', [
-        'phpunit'
+        'phpunit', 'karma'
     ]);
 };
